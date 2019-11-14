@@ -6,50 +6,55 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
     <script src="https://kit.fontawesome.com/1eadafd9bb.js"></script>
+    <script src="text/javascript">
+      $(document).ready(function() {
+        $('#nav-check').click(function() {
+          $('#nav-check').toggleClass('active');
+        });
+      });
+    </script>
 
     <title>Home - Girls Who Code, Baltimore</title>
   </head>
   <body>
     <header>
-      <div class="hero-img">
-        <div class="nav">
-          <input type="checkbox" id="nav-check">
-          <div class="nav-btn">
-            <label for="nav-check">
-              <span id="bar1"></span>
-              <span id="bar2"></span>
-              <span id="bar3"></span>
-            </label>
-          </div>
-
-          <div class="navlinks">
-            <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Get Involved</a></li>
-              <li><a href="#">Donate</a></li>
-            </ul>
-         </div>
+      <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+          </label>
         </div>
 
-
-      <div class="hero-cta side">
+        <div class="navlinks">
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Get Involved</a></li>
+            <li><a href="#">Donate</a></li>
+          </ul>
+       </div>
+      </div>
+      <div class="hero-img">
+        <div class="hero-cta side">
           <div class="cta-text"><h1 class="hero-title title">Join Girls Who Code, Baltimore!</h1></div>
-          <div class="cta-dropdown-menu mt-4">
-            <div class="self-identify-section" style="width: 100%;">
-              <div class="select-role float-left mt-3 text"> I am a:</div>
-              <form action="/action_page.php">
-                <select class="self-identify float-left text" name="cars">
-                  <option value="select">- Please Select -</option>
-                  <option value="student">Student</option>
-                  <option value="parent">Parent/Guardian</option>
-                  <option value="volunteer">Volunteer</option>
-                  <option value="audi">Guest Speaker</option>
-                </select>
-              </form>
+            <div class="cta-dropdown-menu mt-3">
+              <div class="self-identify-section" style="width: 100%;">
+                <div class="select-role float-left mt-3 text"> I am a:</div>
+                <form action="/action_page.php">
+                  <select class="self-identify float-left text" name="cars">
+                    <option value="select">- Please Select -</option>
+                    <option value="student">Student</option>
+                    <option value="parent">Parent/Guardian</option>
+                    <option value="volunteer">Volunteer</option>
+                    <option value="audi">Guest Speaker</option>
+                  </select>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </header>
 
@@ -71,13 +76,13 @@
           </div>
         </div>
         <div class="row eeSteps reversed">
-          <div class="col-md-6">
+          <div class="col-md-6 item2">
             <div class="eeText">
               <h2 class="mb-3">Boost Your Confidence.</h2>
               <p class="text">Spicy jalapeno bacon ipsum dolor amet kielbasa leberkas beef shankle spare ribs chicken tri-tip sausage bresaola pork loin pancetta buffalo.</p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 item1">
             <div class="eeImage"><img src="images/cloud (1).svg" alt="cloud" class="images"></div>
           </div>
         </div>
@@ -110,7 +115,7 @@
 			        </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ea, perferendis error repudiandae numquam dolor fuga temporibus. Unde omnis, consequuntur.</p>
               <ul class="cd-author-info">
-                <li> -John Smith</li>
+                <li>John Smith</li>
              </ul>
             </li>
             <li>
@@ -119,7 +124,7 @@
 		          </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ea, perferendis error repudiandae numquam dolor fuga temporibus. Unde omnis, consequuntur.</p>
               <ul class="cd-author-info">
-                <li>- Layla Kaylee</li>
+                <li>Layla Kaylee</li>
               </ul>
             </li>
             <li>
@@ -128,12 +133,12 @@
               </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ea, perferendis error repudiandae numquam dolor fuga temporibus. Unde omnis, consequuntur.</p>
               <ul class="cd-author-info">
-                <li>- Carmichael Weiss</li>
+                <li>Carmichael Weiss</li>
               </ul>
             </li>
           </ul>
         </div>
-  </section>
+      </section>
 
     <footer class="footer">
       <div class="container" id="footer-content">
@@ -165,9 +170,6 @@
 
               </div>
             </div>
-          </div>
-          <div class="tooter-bottom-section">
-
           </div>
         </div>
       </div>
