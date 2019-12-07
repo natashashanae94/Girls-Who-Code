@@ -1,121 +1,348 @@
 /*
  * GETINVOLVED.PHP FORM VALIDATION.
- * validates form on the client-side using jquery.
- * 
+ * validates form on the client-side
+ * before submission. Form block borders turn
+ * red if form is not complete or written in correct format.
  **/
 
-//Waiting until document fully loads
+
 $(document).ready(function () {
 
-    //When user submits the form. . .
-    $('.signup_form').submit(function (e) {
+    var first_name = $('.firstName').val();
+    var last_name = $('.lastName').val();
+    var phone = $('.phone').val();
+    var email = $('.email').val();
+    var nameCheck = /^[a-zA-Z '-]+$/;
+    var emailCheck = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+    var phoneReg = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+    var role = $('.gwc_role').val();
+    var experience = $('.experience').val();
+    var education = $('.education').val();
 
-        //Creating variables to store input value.
-        var first_name = $('.firstName').val();
-        var last_name = $('.lastName').val();
-        var nameCheck = /^[a-zA-Z '-]+$/;
-        var address = $('.address').val();
-        var addressCheck = /^[a-zA-Z0-9 '-]+$/;
-        var city = $('.city').val();
-        var cityCheck = /^[a-zA-Z '-.]+$/;
-        var state = $('.state').val();
-        var zip = $('.zip').val();
-        var zipReg = /^\d{5}(?:[\s-]\d{4})?$/;
-        var phone = $('.phone').val();
-        var phoneReg = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
-        var email = $('.email').val();
-        var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
-        var role = $('.gwc_role').val();
-        var experience = $('.experience').val();
-        var education = $('.education').val();
 
-        var errors = false;
+    /*FIRST NAME*/
 
-        $(".error").remove();
+    $('.firstName').focus(
+        function() {
+            $('.error1').html('');
+            //border color changes back to neutral
+            $('.box1').addClass('form_box1');
+            $('.box1').removeClass('form_box_error1');
+            $('.change_line_color1').removeClass('change_line_color_negative1');
+            
+    });
 
-      //Check to see if user filled out the form
-        if (first_name.length < 1) {
-            $('.firstName').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!nameCheck.test(first_name)) {
-            $('.firstName').after('<span class="error">Name not valid</span>');
-            errors = true;
+    $('.firstName').blur(
+        function(){
+            if($(this).val() == ''){
+                $('.error1').html('Please enter your first name.');
+                /*When input is wrong or empty, change border color to red*/
+                $('.box1').addClass('form_box_error1');
+                $('.change_line_color1').addClass('change_line_color_negative1');
+
+            } else if (!nameCheck.test($(this).val())) {
+                $('.error1').html('Invalid name.');
+                $('.box1').addClass('form_box_error1');
+                $('.change_line_color1').addClass('change_line_color_negative1');
+
+            }
+    });
+
+    
+
+    $('.firstName').focus(
+        function (e) {
+        e.preventDefault();
+        $('.change_line_color1').addClass('change_line_color_effect1');
+    });
+
+    /*LAST NAME*/
+
+    /*When input is wrong or empty, change border color to red*/
+    $('.lastName').focus(
+        function() {
+            $('.error2').html('');
+            //border color changes back to neutral
+            $('.box2').addClass('form_box2');
+            $('.box2').removeClass('form_box_error2');
+            $('.change_line_color2').removeClass('change_line_color_negative2');
+
+    });
+
+    $('.lastName').blur(
+        function(){
+            if($(this).val() == ''){
+                $('.error2').html('Please enter your last name.');
+                //border color changes
+                $('.box2').addClass('form_box_error2');
+                $('.change_line_color2').addClass('change_line_color_negative2');
+
+            } else if (!nameCheck.test($(this).val())) {
+                $('.error2').html('Invalid name.');
+                $('.box2').addClass('form_box_error2');
+                $('.change_line_color2').addClass('change_line_color_negative2');
+            }
+    });
+    
+
+    $('.lastName').focus(
+        function (e) {
+        e.preventDefault();
+        $('.change_line_color2').addClass('change_line_color_effect2');
+    });
+
+    /*EMAIL ADDRESS*/ 
+
+     /*When input is wrong or empty, change border color to red*/
+     $('.email').focus(
+        function() {
+            $('.error3').html('');
+            //border color changes back to neutral
+            $('.box3').addClass('form_box3');
+            $('.box3').removeClass('form_box_error3');
+            $('.change_line_color3').removeClass('change_line_color_negative3');
+            
+    });
+
+    $('.email').blur(
+        function(){
+            if($(this).val() == ''){
+                $('.error3').html('Please enter an email address.');
+                //border color changes
+                $('.box3').addClass('form_box_error3');
+                $('.change_line_color3').addClass('change_line_color_negative3');
+
+            } else if (!emailCheck.test($(this).val())) {
+                $('.error3').html('Invalid email address.');
+                $('.box3').addClass('form_box_error3');
+                $('.change_line_color3').addClass('change_line_color_negative3');
+            }
+    });
+
+    $('.email').focus(
+        function (e) {
+        e.preventDefault();
+        $('.change_line_color3').addClass('change_line_color_effect3');
+    });
+    
+    /*PHONE ADDRESS*/
+
+     /*When input is wrong or empty, change border color to red*/
+     $('.phone').focus(
+        function() {
+            $('.error4').html('');
+            //border color changes back to neutral
+            $('.box4').addClass('form_box4');
+            $('.box4').removeClass('form_box_error4');
+            $('.change_line_color4').removeClass('change_line_color_negative4');
+    });
+
+    $('.phone').blur(
+        function(){
+            if($(this).val() == ''){
+                $('.error4').html('Please type in a phone number.');
+                //border color changes to red
+                $('.box4').addClass('form_box_error4');
+                $('.change_line_color4').addClass('change_line_color_negative4');
+
+                detectErrors = true; 
+            } else if (!phoneReg.test($(this).val())) {
+                $('.error4').html('Invalid phone number.');
+                $('.box4').addClass('form_box_error4');
+                $('.change_line_color4').addClass('change_line_color_negative4');
+            }
+    });
+
+    $('.phone').focus(
+        function (e) {
+        e.preventDefault();
+        $('.change_line_color4').addClass('change_line_color_effect4');
+    });
+
+    /*GWC ROLES*/
+
+    $('#gwc_role').focus(
+        function() {
+            $('.error5').html('');
+            //border color changes back to neutral
+            $('.box5').addClass('form_box5');
+            $('.box5').removeClass('form_box_error5');
+            $('.change_line_color5').removeClass('change_line_color_negative5');
+    });
+
+    /*PROGRAMMING LANGUAGES*/
+
+    $('.languages').focus(
+        function() {
+            $('.error6').html('');
+            //border color changes back to neutral
+            $('.box6').addClass('form_box6');
+            $('.box6').removeClass('form_box_error6');
+            $('.change_line_color6').removeClass('change_line_color_negative6');
+    });
+
+    $('.languages').blur(
+        function(){
+            if($(this).val() == ''){
+                $('.error6').html('Please type in your answer.');
+                //border color changes to red
+                $('.box6').addClass('form_box_error6');
+                $('.change_line_color6').addClass('change_line_color_negative6');
+            }
+    });
+
+    $('.languages').focus(
+        function (e) {
+        e.preventDefault();
+        $('.change_line_color6').addClass('change_line_color_effect6');
+    });
+
+    /*EXPERIENCES*/
+
+    $("input[name='radios']").focus(
+        function() {
+            $('.error7').html('');
+            //border color changes back to neutral
+            $('.box7').addClass('form_box7');
+            $('.box7').removeClass('form_box_error7');
+            $('.change_line_color7').removeClass('change_line_color_negative7');
+    });
+
+/*
+ * When user hits submit button,
+ * all form boxes are validated. If form input
+ * doesn't pass validation, form box border turns red and a display error msg
+ * is shown.  The form does not submit until all errors are resolved.
+ **/
+    
+ //When user submits the form. . .
+
+    $('.signup_form').submit(function () {
+
+        var detectErrors = false;
+
+        /*FIRST NAME*/
+       
+        if($('.firstName').val() == ''){
+            $('.error1').html('Please enter your first name.');
+            /*When input is wrong or empty, change border color to red*/
+            $('.box1').addClass('form_box_error1');
+            $('.change_line_color1').addClass('change_line_color_negative1');
+
+            detectErrors = true;
+
+        } else if (!nameCheck.test($('.firstName').val())) {
+            $('.error1').html('Invalid name.');
+            $('.box1').addClass('form_box_error1');
+            $('.change_line_color1').addClass('change_line_color_negative1');
+
+            detectErrors = true;
+        }
+       
+        /*LAST NAME*/
+
+        if($('.lastName').val() == ''){
+            $('.error2').html('Please enter your last name.');
+            /*When input is wrong or empty, change border color to red*/
+            $('.box2').addClass('form_box_error2');
+            $('.change_line_color2').addClass('change_line_color_negative2');
+
+            detectErrors = true;
+
+        } else if (!nameCheck.test($('.lastName').val())) {
+            $('.error2').html('Invalid name.');
+            $('.box2').addClass('form_box_error2');
+            $('.change_line_color2').addClass('change_line_color_negative2');
+
+            detectErrors = true;
         }
 
-        if (last_name.length < 1 ) {
-            $('.lastName').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!nameCheck.test(last_name)) {
-            $('.lastName').after('<span class="error">Name not valid</span>');
-            errors = true;
+        /*EMAIL ADDRESS*/
+
+        if($('.email') == ''){
+            $('.error3').html('Please enter your email.');
+            /*When input is wrong or empty, change border color to red*/
+            $('.box3').addClass('form_box_error3');
+            $('.change_line_color3').addClass('change_line_color_negative3');
+
+            detectErrors = true;
+
+        } else if (!emailCheck.test($('.email').val())) {
+            $('.error3').html('Invalid email.');
+            $('.box3').addClass('form_box_error3');
+            $('.change_line_color3').addClass('change_line_color_negative3');
+
+            detectErrors = true;
+        }
+       
+        /*PHONE NUMBER*/
+
+        if ($('.phone') == ''){
+            $('.error4').html('Please enter your phone number.');
+            /*When input is wrong or empty, change border color to red*/
+            $('.box4').addClass('form_box_error4');
+            $('.change_line_color4').addClass('change_line_color_negative4');
+
+            detectErrors = true;
+
+        } else if (!phoneReg.test($('.phone').val())) {
+            $('.error4').html('Invalid phone number.');
+            $('.box4').addClass('form_box_error4');
+            $('.change_line_color4').addClass('change_line_color_negative4');
+
+            detectErrors = true;
         }
 
-        if (address.length < 1) {
-            $('.address').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!addressCheck.test(address)) {
-            $('.address').after('<span class="error">*Invalid address</span>');
-            errors = true;
+        /*GWC ROLE*/
+
+        if ($('#gwc_role').val() === '-Please Select-') {
+            $('.error5').html('Please select a role.');
+            //When input is wrong or empty, change border color to red
+            $('.box5').addClass('form_box_error5');
+            $('.change_line_color5').addClass('change_line_color_negative5');
+
+            detectErrors = true;
+
+        } else if (!$('#gwc_role').val() == 'Student' || !$('#gwc_role').val()== 'Volunteer' || !$('#gwc_role').val() == 'Guest Speaker') {
+            $('.error5').html('Role does not exist.');
+            $('.box5').addClass('form_box_error5');
+            $('.change_line_color5').addClass('change_line_color_negative5');
+
+            detectErrors = true;
         }
 
-        if (city.length < 1) {
-            $('.city').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!cityCheck.test(city)) {
-            $('.city').after('<span class="error">Name not valid</span>');
-            errors = true;
+         /*PROGRAMMING LANGUAGES*/
+
+         if ($('.languages').val() == ''){
+            $('.error6').html('Please enter a language or type in N/A.');
+            /*When input is wrong or empty, change border color to red*/
+            $('.box6').addClass('form_box_error6');
+            $('.change_line_color6').addClass('change_line_color_negative6');
+
+            detectErrors = true;
         }
 
-        if (state == "-Please Select-") {
-            $('.state').after('<span class="error">*This field is required</span>');
-            errors = true;
-        }
+        /*EXPERIENCE*/
 
-        if (zip.length < 1) {
-            $('.zip').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!zipReg.test(zip)) {
-            $('.zip').after('<span class="error">Zipcode not valid</span>');
-            errors = true;
-        }
+       if (!$("input[name='radios']:checked").val()) {
+        $('.error7').html('Please select your years of experience.');
+            /*When input is wrong or empty, change border color to red*/
+            $('.box7').addClass('form_box_error7');
+            $('.change_line_color7').addClass('change_line_color_negative7');
+       }
 
-        if (phone.length < 1) {
-            $('.phone').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!phoneReg.test(phone)) {
-            $('.phone').after('<span class="error">Phone number not valid</span>');
-            errors = true;
-        }
-
-        if (email.length < 1) {
-            $('.email').after('<span class="error">*This field is required</span>');
-            errors = true;
-        } else if (!pattern.test(email)) {
-            $('.email').after('<span class="error">Email not valid</span>');
-            errors = true;
-        }
-
-        if (role == "-Please Select-") {
-            $('.gwc_role').after('<span class="error">*This field is required</span>');
-            errors = true;
-        }
-
-        if (experience == "-Please Select-") {
-            $('.experience').after('<span class="error">*This field is required</span>');
-            errors = true;
-        }
-
-        if (education == "-Please Select-") {
-            $('.education').after('<span class="error">*This field is required</span>');
-            errors = true;
-        }
-
-        if (errors == true) {
-            $('.submit_btn').after('<span class="error">**Failed to submit. Please check the form.')
+       //If there are errors, do not submit form.
+        if (detectErrors == true) {
+            $('.error8').html('**Failed to submit. Please check the form.');
             return false;
         } else {
             return true;
         }
 
     });
+
+    console.log($("input[name='radios']:checked").val());
+
 });
+
+    

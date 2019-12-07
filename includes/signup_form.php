@@ -8,19 +8,12 @@
 			//store all input data into these variables
 			$fname = $_POST['fname'];
 			$lname = $_POST['lname'];
-			$address = $_POST['address'];
-			$city = $_POST['city'];
-			$state = $_POST['state'];
-			$zip = $_POST['zip'];
 			$phone = $_POST['phone'];
 			$email = $_POST['email'];
 			$experience = $_POST['experience'];
-			$experienceArray = array('0', '1-3', '3-5', '5-10', '10+');
+			$experienceArray = array('Beginner / No Experience', '1-2 years', '3-5 years', '5-9 years', '10+ years');
 			$role = $_POST['gwc_role'];
 			$roleArray = array('Student', 'Volunteer', 'Guest Speaker');
-			$school = $_POST['school'];
-			$company = $_POST['company'];
-			$message = $_POST['message'];
 			$subject = "Girls Who Code sign up form.";
 		}
 
@@ -28,39 +21,41 @@
 		function cleanString($x){
 			if($x != "") {
 				$x = filter_var($x, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+				//Escape the form data
+				htmlentities($x, ENT_QUOTES, 'utf-8');
 			}
 		}
 
 		function cleanEmail($x){
 			if($x != "") {
 				$x = filter_var($x, FILTER_SANITIZE_EMAIL);
+				htmlentities($x, ENT_QUOTES, 'utf-8');
 			}
 		}
 
 		function cleanNumber($x) {
 			if($x != "") {
 				$x = filter_var($x, FILTER_SANITIZE_NUMBER_INT);
+				htmlentities($x, ENT_QUOTES, 'utf-8');
 			}
 		}
 
 
 		//call function to sanitize string and escape the result.
 		htmlspecialchars(cleanString($fname));
-		htmlspecialchars(cleanString($lname);
-		htmlspecialchars(cleanString($address));
-		htmlspecialchars(cleanString($city));
-		htmlspecialchars(cleanNumber($zip));
+		htmlspecialchars(cleanString($lname));
 		htmlspecialchars(cleanNumber($phone));
-		htmlspecialchars(cleanString($message));
 		htmlspecialchars(cleanEmail($email));
 		htmlspecialchars(cleanDropDownList($experience));
+
+		
 
 		//SANITIZE AND ESCAPE DROPDOWN LIST
 		if($experience != "" && $experience != ' -Please Select- ') {
 			if (in_array($experience, $experienceArray)) {
 				htmlspecialchars($experience);
 				//Code additional escape statement and database insertion commands here.
-			}
+			} 
 		}
 
 		if($role != "" && $role != ' -Please Select- ') {
@@ -70,6 +65,6 @@
 			}
 		}
 
-		if 
+	
 	}
 ?>

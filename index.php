@@ -4,10 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
     <script src="https://kit.fontawesome.com/1eadafd9bb.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
     <title>Home - Girls Who Code, Baltimore</title>
+
+    <script>
+        function onSelect() {
+            var urlmenu = document.getElementById( 'cta_menu' );
+            window.open('programs.php?page=' + urlmenu.options[urlmenu.selectedIndex].value);
+        };
+            
+    </script>
 </head>
   <body>
       <header>
@@ -29,7 +38,7 @@
                               </div>
                               <div class="navlinks">
                                   <ul>
-                                      <li><a href="programs.php">About</a></li>
+                                      <li><a href="programs.php">Who We Are</a></li>
                                       <li><a href="#">Student Projects</a></li>
                                       <li><a href="getinvolved.php">Get Involved</a></li>
                                       <li><a href="#">Donate</a></li>
@@ -46,13 +55,14 @@
                                      <div class="self-identify-section">
                                          <label>
                                             <span class="show-for-sr"></span>
-                                               <select id="segment" class="no-empty" name="segment">
+                                               <select id="cta_menu" class="no-empty" name="cta_menu" onchange="onSelect()">
                                                   <option>- Select Option -</option>
-                                                  <option>Student</option>
-                                                  <option>Parent/Guardian</option>
-                                                  <option>Volunteer</option>
-                                                  <option>Guest Speaker</option>
+                                                  <option value="students">Student</option>
+                                                  <option value="parents">Parent/Guardian</option>
+                                                  <option value="volunteers">Volunteer</option>
+                                                  <option value="volunteers">Guest Speaker</option>
                                                </select>
+                                            <input type='hidden' name='checkIndx' id='checkIndx'>
                                          </label>
                                      </div>
                                   </div>

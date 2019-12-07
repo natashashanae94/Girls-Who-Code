@@ -3,17 +3,49 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/1eadafd9bb.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="js/script.js"></script>
+	
+	<script>
+		// Applied globally on all textareas with the "autoExpand" class
+$(document)
+    .one('focus.autoExpand', 'textarea.autoExpand', function(){
+        var savedValue = this.value;
+        this.value = '';
+        this.baseScrollHeight = this.scrollHeight;
+        this.value = savedValue;
+    })
+    .on('input.autoExpand', 'textarea.autoExpand', function(){
+        var minRows = this.getAttribute('data-min-rows')|0, rows;
+        this.rows = minRows;
+        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+        this.rows = minRows + rows;
+    });
+
+	</script>
+
     <title>Get Involved - Girls Who Code, Baltimore</title>
+
+	<style>
+        .page-title::after {
+            content: none;
+            position: static;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+            height: none;
+        }
+    </style>
   </head>
   <body>
-    <header>
-      <div class="landing-img-get-involved">
-         <div class="hero">
+  <header>
+          <div class="landing-img-get-involved">
+              <div class="hero">
                   <div class="hero-inner row">
                       <div class="nav">
                           <input type="checkbox" id="nav-check">
@@ -30,7 +62,7 @@
                               </div>
                               <div class="navlinks">
                                   <ul>
-                                      <li><a href="programs.php">About</a></li>
+                                      <li><a href="programs.php">Who We Are</a></li>
                                       <li><a href="#">Student Projects</a></li>
                                       <li><a href="getinvolved.php">Get Involved</a></li>
                                       <li><a href="#">Donate</a></li>
@@ -38,193 +70,210 @@
                               </div>
                           </div>
                       </div>
-                      <div class="hero-copy expanded" style="width: 50%;">
-                          <div class="hero-copy-content">
-                              <h1 id="page-title" class="page-title">Get Involved!</h1>
-
-                          </div>
-                      </div>
+					  <div class="hero-copy expanded" style="width: 50%;">
+                        <div class="hero-copy-content">
+                            <h1 id="page-title" class="page-title">Get Involved</h1>
+                        </div>
+                    </div>
                   </div>
               </div>
-      </div>
-    </header>
+          </div>
+      </header>
+
 	<div class="container">
-		<div class="info-title title mb-5 mt-5"><h1>Sign Up</h1></div>
-
-		<form class="signup_form" method="POST" action="../girlswhocode/signup_form.php">
-
-		  <div class="form-row">
-			<div class="col-md-6 mb-3">
-			  <label for="first name">First name</label>
-			  <input type="text" class="firstName form-control" name="fname">
-			</div>
-			<div class="col-md-6 mb-3">
-			  <label for="last name">Last name</label>
-			  <input type="text" class="lastName form-control" name="lname">
-			</div>
-		  </div>
-		  <div class="form-row">
-			<div class="col-md-12">
-			<label for="address">Address</label>
-			  <input type="text" class="address form-control" name="address">
-			</div>
-		  </div>
-		  <div class="form-row">
-			<div class="col-md-6 mb-3">
-			  <label for="city">City</label>
-			  <input type="text" class="city form-control" name="city">
-			</div>
-			<div class="col-md-3 mb-3">
-			  <label for="State">State</label>
-			  <select class="state form-control" name="state">
-				<option> -Please Select- </option>
-				<option value="AL">Alabama</option>
-          		<option value="AK">Alaska</option>
-          		<option value="AZ">Arizona</option>
-          		<option value="AR">Arkansas</option>
-          		<option value="CA">California</option>
-          		<option value="CO">Colorado</option>
-          		<option value="CT">Connecticut</option>
-          		<option value="DE">Delaware</option>
-          		<option value="DC">District Of Columbia</option>
-          		<option value="FL">Florida</option>
-          		<option value="GA">Georgia</option>
-          		<option value="HI">Hawaii</option>
-          		<option value="ID">Idaho</option>
-          		<option value="IL">Illinois</option>
-          		<option value="IN">Indiana</option>
-          		<option value="IA">Iowa</option>
-          		<option value="KS">Kansas</option>
-          		<option value="KY">Kentucky</option>
-          		<option value="LA">Louisiana</option>
-          		<option value="ME">Maine</option>
-          		<option value="MD">Maryland</option>
-          		<option value="MA">Massachusetts</option>
-          		<option value="MI">Michigan</option>
-          		<option value="MN">Minnesota</option>
-          		<option value="MS">Mississippi</option>
-          		<option value="MO">Missouri</option>
-          		<option value="MT">Montana</option>
-          		<option value="NE">Nebraska</option>
-          		<option value="NV">Nevada</option>
-          		<option value="NH">New Hampshire</option>
-          		<option value="NJ">New Jersey</option>
-          		<option value="NM">New Mexico</option>
-          		<option value="NY">New York</option>
-          		<option value="NC">North Carolina</option>
-          		<option value="ND">North Dakota</option>
-          		<option value="OH">Ohio</option>
-          		<option value="OK">Oklahoma</option>
-          		<option value="OR">Oregon</option>
-          		<option value="PA">Pennsylvania</option>
-          		<option value="RI">Rhode Island</option>
-          		<option value="SC">South Carolina</option>
-          		<option value="SD">South Dakota</option>
-          		<option value="TN">Tennessee</option>
-          		<option value="TX">Texas</option>
-          		<option value="UT">Utah</option>
-          		<option value="VT">Vermont</option>
-          		<option value="VA">Virginia</option>
-          		<option value="WA">Washington</option>
-          		<option value="WV">West Virginia</option>
-          		<option value="WI">Wisconsin</option>
-          		<option value="WY">Wyoming</option>
-			  </select>
-			  <div class="invalid-tooltip">
-				Please provide a valid state.
-			  </div>
-			</div>
-			<div class="col-md-3 mb-3">
-			  <label for="Zip Code">Zip</label>
-			  <input type="text" class="zip form-control" name="zip">
-			  <div class="invalid-tooltip">
-				Please provide a valid zip.
-			  </div>
-			</div>
-		  </div>
-			<div class="form-row">
-			  <div class="col-md-6 mb-3">
-				<label for="Phone">Phone</label>
-				<input type="tel" class="phone form-control" name="phone" placeholder="000-000-0000">
-			  </div>
-			  <div class="col-md-6 mb-3">
-				<label for="Email">Email</label>
-				<input type="email" class="email form-control" name="email" placeholder="email@example.com">
-			  </div>
+	
+		<form class="signup_form" method="POST" action="../includes/signup_form.php">
+			
+			<div class="col-md-12 form_box mt-5">
+				<div class="formSolidBackgroundStripe"></div>
+				<div class="form_box_title">
+					<h1 class="form_header header">Girls Who Code, Baltimore<br>Sign-up Form</h1>
+				</div>
+				<p class="form_required mt-5">Required *</p>
 			</div>
 
-		  <hr>
-		  <div class="form-row">
-			<div class="col-md-6 mb-3">
-			  <label for="role">I would like to be a:</label>
-			  <select class="gwc_role form-control" name="gwc_role">
-				<option> -Please Select- </option>
-				<option>Student</option>
-				<option>Volunteer</option>
-				<option>Guest Speaker</option>
-			  </select>
+			<div class="col-md-12 form_box1 box1">
+				<div class="form_box_title">
+					<h2>First Name *</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<div class="form_box_text_input">
+						<input type="text" class="form_input firstName" name="fname" placeholder="Your answer">
+            			<div class="form_input_line"><div class="change_line_color1"></div></div>
+					</div>
+				</div>
+       		  <div class="error1"></div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<label for="experience">Programming Experience (Years)</label>
-				<select class="experience form-control" name="experience">
-				  <option> -Please Select- </option>
-				  <option>0</option>
-				  <option>1-3</option>
-				  <option>3-5</option>
-				  <option>5-10</option>
-				  <option>10+</option>
-				</select>
+
+			<div class="col-md-12 form_box2 box2">
+				<div class="form_box_title">
+					<h2>Last Name *</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<div class="form_box_text_input">
+						<input type="text" class="form_input lastName" name="lname" placeholder="Your answer">
+						<div class="form_input_line"><div class="change_line_color2"></div></div>
+					</div>
+				</div>
+				<div class="error2"></div>
 			</div>
+
+			<div class="col-md-12 form_box3 box3">
+				<div class="form_box_title">
+					<h2>Email Address *</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<div class="form_box_text_input">
+						<input type="text" class="form_input email" name="email" placeholder="Your email">
+						<div class="form_input_line"><div class="change_line_color3"></div></div>
+					</div>
+				</div>
+				<div class="error3"></div>
+			</div>
+
+			<div class="col-md-12 form_box4 box4">
+				<div class="form_box_title">
+					<h2>Phone Number *</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<div class="form_box_text_input">
+						<input type="text" class="form_input phone" name="phone" placeholder="Your phone">
+						<div class="form_input_line"><div class="change_line_color4"></div></div>
+					</div>
+				</div>
+				<div class="error4"></div>
+			</div>
+
+			<div class="col-md-12 form_box5 box5">
+				<div class="form_box_title">
+					<h2>I am interested in becoming a *</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<select class="select_input form-control" id="gwc_role" name="role">
+						<option value="-Please Select-"> -Please Select- </option>
+						<option value="Student">Student</option>
+						<option value="Volunteer">Volunteer</option>
+						<option value="Guest Speaker">Guest Speaker</option>
+					</select>
+				</div>
+			  <div class="error5"></div>
+			</div>
+
+			<div class="col-md-12 form_box6 box6 text_expand">
+				<div class="form_box_title">
+					<h2>What programming languages do you know? *</h2>
+				</div>
+				<div class="form_box_text_wrapper text_expand">
+					<div class="form_box_text_input">
+						<textarea class='languages autoExpand' data-min-rows='2' placeholder='Your answer'></textarea>
+						<div class="form_input_line"><div class="change_line_color6"></div>
+					</div>
+				</div>
+			</div>
+			<div class="error6"></div>
 		  </div>
 
-		  <div class="form-row">
-			<div class="col-md-6 mb-3">
-				<label for="School">School
-					<input type="text" class="school form-control" name="school">
-				</label>
+			<div class="col-md-12 form_box7 box7 experience">
+				<div class="form_box_title">
+					<h2>What is your technical skill level? *</h2>
+				</div>
+					<label class="radio">
+						<input id="radio2" type="radio" name="radios" value="Beginner / No Experience">
+						<span class="outer">
+							<span class="inner"></span>
+						</span>
+						Beginner / No Experience
+					</label>
+					<label class="radio">
+						<input id="radio2" type="radio" name="radios" value="1-2 years">
+						<span class="outer">
+							<span class="inner"></span>
+						</span>
+						1-2 years
+					</label>
+					<label class="radio">
+						<input id="radio2" type="radio" name="radios" value="3-5 years">
+						<span class="outer">
+							<span class="inner"></span>
+						</span>
+						3-5 years
+					</label>
+					<label class="radio">
+						<input id="radio2" type="radio" name="radios" value="5-9 years">
+						<span class="outer">
+							<span class="inner"></span>
+						</span>
+						5-9 years
+					</label>
+					<label class="radio">
+						<input id="radio2" type="radio" name="radios" value="10+ years">
+						<span class="outer">
+							<span class="inner"></span>
+						</span>
+						10+ years
+					</label>
+				<div class="error7"></div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<label for="education">Education Level:</label>
-				<select class="education form-control" name="education">
-				  <option> -Please Select- </option>
-				  <option>Kindergarten</option>
-				  <option>Grade 1</option>
-				  <option>Grade 2</option>
-				  <option>Grade 3</option>
-				  <option>Grade 4</option>
-				  <option>Grade 5</option>
-				  <option>Middle School (6-8)</option>
-				  <option>High School (9-12)</option>
-				  <option>Some College</option>
-				  <option>Certificate</option>
-				  <option>Associates</option>
-				  <option>Bachelors</option>
-				  <option>Masters</option>
-				  <option>Doctorate</option>
-				  <option>Self-Taught/Home-schooled</option>
-				</select>
+			
+			<div class="col-md-12 form_box text_expand">
+				<div class="form_box_title">
+					<h2>How did you hear about GWC Baltimore?</h2>
+				</div>
+				<div class="form_box_text_wrapper text-expand">
+					<div class="form_box_text_input">
+						<textarea class='autoExpand' data-min-rows='2' placeholder='Your answer'></textarea>
+						<div class="form_input_line"></div>
+					</div>
+				</div>
 			</div>
-		  </div>
-		  <div class="form-row">
-			<div class="col-md-12 mb-3">
-				<label for="Company">Company
-					<input type="text" class="company form-control" name="company">
-				</label>
+			<div class="col-md-12 form_box text_expand">
+				<div class="form_box_title">
+					<h2>What impact do you hope GWC Baltimore would have on you or your community?</h2>
+				</div>
+				<div class="form_box_text_wrapper text_expand">
+					<div class="form_box_text_input">
+						<textarea class='autoExpand' data-min-rows='2' placeholder='Your answer'></textarea>
+						<div class="form_input_line"></div>
+					</div>
+				</div>
 			</div>
-		  </div>
-
-		  <hr>
-		  
-		  <div class="form-row">
-			<div class="col-md-12 mb-3">
-				<label for="profile-summary"> Tell Us About Yourself
-					<textarea class="form-control" name="message" maxlength="200"></textarea>
-				</label>
+			<div class="col-md-12 form_box text_expand">
+				<div class="form_box_title">
+					<h2>Anything else you'd like to share about yourself?</h2>
+				</div>
+				<div class="form_box_text_wrapper text_expand">
+					<div class="form_box_text_input">
+						<textarea class='autoExpand' data-min-rows='2' placeholder='Your answer'></textarea>
+						<div class="form_input_line"></div>
+					</div>
+				</div>
 			</div>
-		  </div>
-		  <input class="submit_btn mb-5 btn btn-danger" type="submit" value="Submit" name="submit">
+			<div class="col-md-12 form_box">
+				<div class="form_box_title">
+					<h2>Github Username (if you have one)</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<div class="form_box_text_input">
+						<input type="text" class="form_input email" name="email" placeholder="Your answer">
+						<div class="form_input_line"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 form_box">
+				<div class="form_box_title">
+					<h2>Link to your LinkedIn Profile (if you have one)</h2>
+				</div>
+				<div class="form_box_text_wrapper">
+					<div class="form_box_text_input">
+						<input type="text" class="form_input email" name="email" placeholder="Your answer">
+						<div class="form_input_line"></div>
+					</div>
+				</div>
+			</div>
+			<input class="submit_btn mt-3 mb-3 btn btn-danger" type="submit" value="Submit" name="submit">
+			<div class="error8 mb-3"></div>
 		</form>
-	</div><!--container-->
+	</div>
 
       <footer class="footer">
         <div class="container" id="footer-content">

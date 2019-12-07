@@ -101,8 +101,7 @@
           </div>
           <div class="col-md-9">
             <div class="table-text">
-              <p>Druid Heights Community Development Corporation
-        2140 McCulloh St, Baltimore, MD 21217</p>
+              <p>1219 Druid Hill Ave Baltimore, MD 21217</p>
             </div>
           </div>
         </div>

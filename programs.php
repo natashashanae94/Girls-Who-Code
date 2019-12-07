@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/1eadafd9bb.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Get Involved - Girls Who Code, Baltimore</title>
 
     <style>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="navlinks">
                                 <ul>
-                                    <li><a href="programs.php">About</a></li>
+                                    <li><a href="programs.php">Who We Are</a></li>
                                     <li><a href="#">Student Projects</a></li>
                                     <li><a href="getinvolved.php">Get Involved</a></li>
                                     <li><a href="#">Donate</a></li>
@@ -63,25 +63,25 @@
     <div class="row info-tabs mb-5">
         <div class="col-md-4 tab1"><a class="tab" href="?page=students">Students</a></div>
         <div class="col-md-4 tab2"><a class="tab" href="?page=parents">Parent/Guardian</a></div>
-        <div class="col-md-4 tab3"><a class="tab" href="?page=volunteers">Volunteers/Guest Speakers</a></div>
+        <div class="col-md-4 tab3"><a class="tab" href="?page=volunteers">Volunteer/Guest Speaker</a></div>
     </div>
 
   
-        <?php
-        if(isset($_GET['page'])) {
+    <?php
+			if(isset($_GET['page'])) {
 
-        $page = $_GET["page"];
-        $filename = "includes/" . $page . '.php';
+			$page = $_GET["page"];
+			$filename = "includes/" . $page . '.php';
 
-        if (file_exists($filename)) {
-        include $filename;
-        } else {
-        include 'includes/students.php';
-        }
-        } else {
-        include 'includes/students.php';
-        }
-        ?>
+			if (file_exists($filename)) {
+			    include $filename;
+			} else {
+                include 'includes/students.php';
+            }
+			} else {
+			    include 'includes/students.php';
+            }
+    ?>
 
 
     <footer class="footer">
